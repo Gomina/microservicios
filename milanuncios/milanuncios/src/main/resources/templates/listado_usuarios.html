@@ -1,0 +1,46 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Insert title here</title>
+</head>
+
+
+
+<body>
+    <h1>LISTADO DE CLIENTES</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">NIF</th>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">DIRECCION</th>
+                <th scope="col">TELEFONO</th>
+                <th scope="col">FACTURACION</th>
+                <th scope="col">ACCION</th>
+                <th scope="col">ACCION</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="c : ${clientes}">
+                <td th:text="${c.nif}"></td>
+                <td th:text="${c.nombre}"></td>
+                <td th:text="${c.direccion}"></td>
+                <td th:text="${c.telefono}"></td>
+                <td th:text="${c.facturacion}"></td>
+                <td><a th:href="@{|/delete_cliente_by_nif/${c.nif}|}">delete</a></td>
+                <td><a th:href="@{|/editar_cliente_by_nif/${c.nif}|}">editar</a></td>
+            </tr>
+
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/}">ir a menu</a>
+</body>
+
+</html>
